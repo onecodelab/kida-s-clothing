@@ -1,12 +1,11 @@
 import { motion, AnimatePresence } from 'motion/react'
 import { Trash2, Plus, Minus, ArrowRight, ShoppingBag } from 'lucide-react'
-import { useNavigate, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { useCart } from '../context/CartContext'
 
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity, subtotal } = useCart()
-  const navigate = useNavigate()
 
   return (
     <div className="min-h-screen bg-gray-50">
