@@ -3,11 +3,11 @@ import Navbar from '../components/Navbar'
 import BottomLeftCard from '../components/BottomLeftCard'
 
 const products = [
-  { id: 1, name: "Authentic Habesha Kemis", price: "$320.00", image: "/p1.png", colors: ['#FFFFFF', '#8E44AD', '#F1C40F'] },
-  { id: 2, name: "Men's Habesha Shirt, Classic", price: "$190.00", image: "/p2.png" },
-  { id: 3, name: "Modern Red-Belt Dress", price: "$280.00", image: "/p3.png" },
-  { id: 4, name: "Emerald Habesha Gown", price: "$350.00", image: "/p4.png" },
-  { id: 5, name: "Golden Tilet Dress", price: "$310.00", image: "/p5.png" },
+  { id: 1, name: "Authentic Habesha Kemis", price: "18,500 ETB", image: "/p1.png", colors: ['#FFFFFF', '#8E44AD', '#F1C40F'] },
+  { id: 2, name: "Men's Habesha Shirt, Classic", price: "11,200 ETB", image: "/p2.png" },
+  { id: 3, name: "Modern Red-Belt Dress", price: "16,800 ETB", image: "/p3.png" },
+  { id: 4, name: "Emerald Habesha Gown", price: "19,500 ETB", image: "/p4.png" },
+  { id: 5, name: "Golden Tilet Dress", price: "17,400 ETB", image: "/p5.png" },
 ]
 
 export default function ProductsPage() {
@@ -48,24 +48,28 @@ export default function ProductsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-white/40 backdrop-blur-xl border border-white/30 rounded-[2rem] overflow-hidden flex flex-col group p-4"
+                  className="bg-white/30 backdrop-blur-xl border border-white/20 rounded-[2.5rem] flex flex-col group p-4 shadow-sm"
                 >
-                  <div className="aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] mb-4 bg-white/20">
+                  {/* Inner Image Box */}
+                  <div className="aspect-[4/5] w-full overflow-hidden rounded-[2rem] bg-white/60 flex items-center justify-center p-6 group-hover:bg-white/80 transition-colors duration-500">
                     <img 
                       src={product.image} 
                       alt={product.name} 
-                      className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-md"
                     />
                   </div>
-                  <div className="flex flex-col gap-1 px-2 pb-2">
-                    <h3 className="text-lg font-normal text-[#5E6470] leading-tight">{product.name}</h3>
-                    <span className="text-lg font-medium text-[#5E6470]">{product.price}</span>
+
+                  {/* Text Details */}
+                  <div className="flex flex-col gap-0.5 mt-3 px-1">
+                    <h3 className="text-[17px] font-normal text-[#5E6470] leading-tight">
+                      {product.name} - {product.price}
+                    </h3>
                     {product.colors && (
-                      <div className="flex gap-1.5 mt-1">
+                      <div className="flex gap-1.5 mt-2">
                         {product.colors.map((color, idx) => (
                           <div 
                             key={idx} 
-                            className="w-4 h-4 rounded-full border border-white/50"
+                            className="w-4 h-4 rounded-full border border-white/50 shadow-sm"
                             style={{ backgroundColor: color }}
                           />
                         ))}
