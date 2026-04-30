@@ -3,7 +3,6 @@ import { motion } from 'motion/react'
 import Navbar from './Navbar'
 import HeroBadge from './HeroBadge'
 import BottomLeftCard from './BottomLeftCard'
-import BottomRightCorner from './BottomRightCorner'
 
 const products = [
   { id: 1, image: '/avatar1.png', name: 'Abyssinia Gold Tilet', price: '$249' },

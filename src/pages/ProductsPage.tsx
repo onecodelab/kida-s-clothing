@@ -1,7 +1,6 @@
 import { motion } from 'motion/react'
 import Navbar from '../components/Navbar'
 import BottomLeftCard from '../components/BottomLeftCard'
-import BottomRightCorner from '../components/BottomRightCorner'
 
 const products = [
   { id: 1, name: "Authentic Habesha Kemis", price: "$320.00", image: "/p1.png", colors: ['#FFFFFF', '#8E44AD', '#F1C40F'] },
