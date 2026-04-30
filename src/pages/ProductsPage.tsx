@@ -77,29 +77,6 @@ export default function ProductsPage() {
             </div>
           </div>
 
-          {/* Side Avatars (Mockup Request) */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="hidden xl:flex absolute left-8 top-1/2 -translate-y-[20%] z-20 flex-col items-center"
-          >
-            <div className="w-48 h-48 rounded-full border-8 border-white/20 bg-white/10 backdrop-blur-md p-2 overflow-hidden shadow-2xl relative">
-               <img src="/av_woman.png" className="w-full h-full object-cover rounded-full" alt="Curator" />
-               <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent pointer-events-none" />
-            </div>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="hidden xl:flex absolute right-8 top-1/2 -translate-y-[20%] z-20 flex-col items-center"
-          >
-            <div className="w-48 h-48 rounded-full border-8 border-white/20 bg-white/10 backdrop-blur-md p-2 overflow-hidden shadow-2xl relative">
-               <img src="/av_man.png" className="w-full h-full object-cover rounded-full" alt="Curator" />
-               <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent pointer-events-none" />
-            </div>
-          </motion.div>
-
           {/* Shared UI elements in corners */}
           <div className="absolute bottom-0 left-0 w-full pointer-events-none flex justify-between items-end">
             <div className="pointer-events-auto scale-90 origin-bottom-left"><BottomLeftCard /></div>
