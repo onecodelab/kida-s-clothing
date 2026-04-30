@@ -5,10 +5,10 @@ import { Link, useNavigate } from 'react-router-dom'
 export default function Navbar() {
   const navigate = useNavigate()
   const menuItems = [
-    { label: 'Collections', href: '/collections', hasDropdown: false },
-    { label: 'Sustainability', href: '#', hasDropdown: true },
+    { label: 'All Collections', href: '/collections', hasDropdown: false },
+    { label: 'Men', href: '#', hasDropdown: false },
+    { label: 'Women', href: '#', hasDropdown: false },
     { label: 'About Us', href: '#', hasDropdown: false },
-    { label: 'Customer Care', href: '#', hasDropdown: true },
   ]
 
   return (
