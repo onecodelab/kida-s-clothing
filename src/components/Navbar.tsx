@@ -71,28 +71,70 @@ export default function Navbar() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-white/80 backdrop-blur-2xl border-b border-white/20 py-8 px-6 flex flex-col gap-6 md:hidden z-40 shadow-2xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 w-full h-screen bg-white/30 backdrop-blur-[40px] flex flex-col items-center justify-center z-[100] md:hidden"
           >
-            {menuItems.map((item, i) => (
-              <Link 
-                key={i} 
-                to={item.href} 
-                onClick={() => setIsMenuOpen(false)}
-                className="text-2xl font-normal text-[#5E6470] border-b border-[#5E6470]/10 pb-2"
-              >
-                {item.label}
-              </Link>
-            ))}
-            <motion.button 
-              onClick={() => { navigate('/collections'); setIsMenuOpen(false); }}
-              className="mt-4 flex items-center justify-center bg-[rgba(30,50,90,0.8)] text-white rounded-full py-4 gap-3"
+            {/* Close Button Inside Fullscreen Menu */}
+            <button 
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-8 right-8 p-2 text-[#5E6470]"
             >
-              <ArrowUpRight className="w-6 h-6" />
-              <span className="text-lg">Shop Now</span>
-            </motion.button>
+              <X className="w-10 h-10" />
+            </button>
+
+            <motion.div 
+              initial="closed"
+              animate="open"
+              variants={{
+                open: { transition: { staggerChildren: 0.1 } },
+                closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
+              }}
+              className="flex flex-col items-center gap-8"
+            >
+              {menuItems.map((item, i) => (
+                <motion.div
+                  key={i}
+                  variants={{
+                    open: { opacity: 1, y: 0 },
+                    closed: { opacity: 0, y: 20 }
+                  }}
+                >
+                  <Link 
+                    to={item.href} 
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-4xl md:text-5xl font-light text-[#5E6470] hover:text-[#1E325A] transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
+
+              <motion.div
+                variants={{
+                  open: { opacity: 1, y: 0, scale: 1 },
+                  closed: { opacity: 0, y: 20, scale: 0.9 }
+                }}
+                className="mt-8"
+              >
+                <motion.button 
+                  onClick={() => { navigate('/collections'); setIsMenuOpen(false); }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center bg-[#1E325A] text-white rounded-full px-10 py-5 gap-4 shadow-xl"
+                >
+                  <ArrowUpRight className="w-6 h-6" />
+                  <span className="text-xl font-medium">Shop Now</span>
+                </motion.button>
+              </motion.div>
+            </motion.div>
+
+            {/* Bottom Branding / Socials in Menu */}
+            <div className="absolute bottom-12 flex flex-col items-center gap-4">
+              <img src="/logo.png" alt="Logo" className="h-12 opacity-30" />
+              <p className="text-sm text-[#5E6470]/40 font-light">ETHIOPIAN TRADITIONAL DRESS</p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
