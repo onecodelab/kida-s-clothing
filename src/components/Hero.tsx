@@ -22,6 +22,15 @@ export default function Hero() {
     // Wheel Event handling (Desktop/Trackpad)
     const onWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        const isAtEnd = activeIndex === products.length - 1;
+        const isAtStart = activeIndex === 0;
+        
+        // If we are at the end and scrolling down, or at the start and scrolling up,
+        // don't prevent default, allowing the page to scroll naturally.
+        if ((isAtEnd && e.deltaY > 0) || (isAtStart && e.deltaY < 0)) {
+          return;
+        }
+
         e.preventDefault()
         
         if (isScrolling.current) return
@@ -62,6 +71,14 @@ export default function Hero() {
       const deltaX = touchStartX - touchEndX
 
       if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 40) {
+        const isAtEnd = activeIndex === products.length - 1;
+        const isAtStart = activeIndex === 0;
+
+        // If we are at the boundaries, allow normal page scrolling
+        if ((isAtEnd && deltaY > 0) || (isAtStart && deltaY < 0)) {
+          return;
+        }
+
         if (e.cancelable) e.preventDefault()
         
         if (isScrolling.current) return
